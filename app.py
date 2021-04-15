@@ -70,7 +70,7 @@ async def unsubscribe(message: types.Message):
         await message.answer('Вы успешно отписаны от рассылки')
 @dp.message_handler(commands=['addk'])
 async def subscribek2(message: types.Message):
-    keyw = (message.text)[6:]
+    keyw = ((message.text)[6:]).strip()
     if keyw != '':
         if (not base.key_exists(message.from_user.id, keyw)):
             base.add_key(message.from_user.id, keyw)
@@ -79,9 +79,10 @@ async def subscribek2(message: types.Message):
             await message.answer('Вы уже подписаны на это ключевое слово')
     else:
         await message.answer('Недопустимое название для ключевого слова')
+
 @dp.message_handler(commands=['delk'])
 async def unsubscribek2(message: types.Message):
-    keyww = (message.text)[6:]
+    keyww = ((message.text)[6:]).strip()
     if (not base.key_exists(message.from_user.id, keyww)):
         await message.answer('Вы небыли подписаны на это ключевое слово')
     else:
@@ -96,7 +97,7 @@ async def showk(message: types.Message):
         await message.answer(inp2[2:-3])
 @dp.message_handler(commands=['addc'])
 async def subscribec(message: types.Message):
-    kateg = (message.text)[6:]
+    kateg = ((message.text)[6:]).strip()
     if kateg in ['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology']:
         if (not base.categ_exists(message.from_user.id, kateg)):
             base.add_categ(message.from_user.id, kateg)
@@ -108,7 +109,7 @@ async def subscribec(message: types.Message):
 'категории\nПопробуйте:\nbusiness\nentertainment\ngeneral\nhealth\nscience\nsports\ntechnology')
 @dp.message_handler(commands=['delc'])
 async def unsubscribec(message: types.Message):
-    kategg = (message.text)[6:]
+    kategg = ((message.text)[6:]).strip()
     if (not base.categ_exists(message.from_user.id, kategg)):
         await message.answer('Вы небыли подписаны на эту категорию')
     else:
@@ -154,7 +155,7 @@ async def start(message: types.Message):
 @dp.message_handler(commands=['help'])
 async def help(message: types.Message):
     await message.answer('/subscribe - Подписаться на бота\n/addk text - Подписаться на ключ.слово text\n/delk text'
-' - Подписаться на ключ.слово text\n/showk - Посмотреть подписки на ключ.слова\n/addc text - Подписаться на категорию'
+' - Отписаться от ключ.слова text\n/showk - Посмотреть подписки на ключ.слова\n/addc text - Подписаться на категорию'
 ' text\n/delc text - Отписаться от категории text\n/showc - Посмотреть подписки на категории\n/newsc - Получить 10 '
 'свежих новостей для каждого ключ.слова\n/newsk - Получить 10 релевантных новостей для каждой категории\n/unsubscribe '
 '- Отписаться от бота')
