@@ -71,11 +71,14 @@ async def unsubscribe(message: types.Message):
 @dp.message_handler(commands=['addk'])
 async def subscribek2(message: types.Message):
     keyw = (message.text)[6:]
-    if (not base.key_exists(message.from_user.id, keyw)):
-        base.add_key(message.from_user.id, keyw)
-        await message.answer('Вы успешно подписались на ключевое слово')
+    if keyw != '':
+        if (not base.key_exists(message.from_user.id, keyw)):
+            base.add_key(message.from_user.id, keyw)
+            await message.answer('Вы успешно подписались на ключевое слово')
+        else:
+            await message.answer('Вы уже подписаны на это ключевое слово')
     else:
-        await message.answer('Вы уже подписаны на это ключевое слово')
+        await message.answer('Недопустимое название для ключевого слова')
 @dp.message_handler(commands=['delk'])
 async def unsubscribek2(message: types.Message):
     keyww = (message.text)[6:]
@@ -146,7 +149,7 @@ async def news17(message: types.Message):
             await message.answer('<a href="{}">{}</a>'.format(b, a), parse_mode='html')
 @dp.message_handler(commands=['start'])
 async def start(message: types.Message):
-    await message.answer('Добро пожаловать в новостной бот\nИспользуйте подскази в команде /help')
+    await message.answer('Добро пожаловать в новостной бот\nИспользуйте подсказки в команде /help')
 
 @dp.message_handler(commands=['help'])
 async def help(message: types.Message):
