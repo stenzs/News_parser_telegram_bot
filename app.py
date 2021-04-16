@@ -156,7 +156,7 @@ async def start(message: types.Message):
 async def help(message: types.Message):
     await message.answer('/subscribe - Подписаться на бота\n/addk text - Подписаться на ключ.слово text\n/delk text'
 ' - Отписаться от ключ.слова text\n/showk - Посмотреть подписки на ключ.слова\n/addc text - Подписаться на категорию'
-' text\n/delc text - Отписаться от категории text\n/showc - Посмотреть подписки на категории\n/newsc - Получить 10 '
-'свежих новостей для каждого ключ.слова\n/newsk - Получить 10 релевантных новостей для каждой категории\n/unsubscribe '
+' text\n/delc text - Отписаться от категории text\n/showc - Посмотреть подписки на категории\n/newsk - Получить 10 '
+'свежих новостей для каждого ключ.слова\n/newsc - Получить 10 релевантных новостей для каждой категории\n/unsubscribe '
 '- Отписаться от бота')
 executor.start_polling(dp, skip_updates=True)
